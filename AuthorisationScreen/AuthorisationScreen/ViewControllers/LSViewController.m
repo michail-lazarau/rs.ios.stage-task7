@@ -33,7 +33,8 @@
 
     self.loginCredential = @"username";
     self.passwordCredential = @"password";
-    self.securityCheck = @"132";
+    self.securityCheck = @"1 3 2";
+    // https://stackoverflow.com/questions/36814134/setting-keyboard-to-a-textfield-to-english-language-only
     // results in always enabled english keyboard
     self.loginTxtField.keyboardType = UIKeyboardTypeASCIICapable;
     self.passwordTxtField.keyboardType = UIKeyboardTypeASCIICapable;
@@ -65,7 +66,7 @@
 }
 
 - (IBAction)SecureBtnWasPressed:(SecureButton *)sender {
-    if (self.secureView.resultLbl.text.length == 3){
+    if (self.secureView.resultLbl.text.length == 5){
         self.secureView.resultLbl.text = @"_";
     }
     if ([self.secureView.resultLbl.text isEqual:@"_"]) {
@@ -76,7 +77,7 @@
     
     [self.secureView.resultLbl setText: [self.secureView.resultLbl.text stringByAppendingString:sender.titleLabel.text]];
     
-    if (self.secureView.resultLbl.text.length == 3) {
+    if (self.secureView.resultLbl.text.length == 5) {
         if([self.securityCheck isEqual:self.secureView.resultLbl.text]){
             self.secureView.layer.borderColor = [Colors rsTurquoiseGreen].CGColor;
             [self callAlert];
@@ -84,6 +85,7 @@
             self.secureView.layer.borderColor = [Colors rsVenetianRed].CGColor;
         }
     } else {
+        [self.secureView.resultLbl setText: [self.secureView.resultLbl.text stringByAppendingString: @" "]];
         self.secureView.layer.borderColor = [UIColor clearColor].CGColor;
     }
 }
