@@ -73,8 +73,6 @@
         self.secureView.resultLbl.text = @"";
     }
     
-//    [self.secureView.resultLbl setText:[[self.secureView.resultLbl.text stringByAppendingString: @" "] stringByAppendingString:sender.titleLabel.text]];
-    
     [self.secureView.resultLbl setText: [self.secureView.resultLbl.text stringByAppendingString:sender.titleLabel.text]];
     
     if (self.secureView.resultLbl.text.length == 5) {
